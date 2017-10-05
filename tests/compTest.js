@@ -3,42 +3,37 @@ const AddNewComputerPage = require('./../pageobjects/AddNewComputerPage');
 const EditComputerPage = require('./../pageobjects/EditComputerPage');
 const StringUtils = require('./../utils/StringUtils');
 
-describe('Computer-database mainPage layout verification', function () {
+describe('Computer-database mainPage layout verification', () => {
     let indexPageObject = new IndexPage();
-    beforeEach(function () {
-        return browser.get('http://computer-database.herokuapp.com/computers');
+    beforeEach(() => browser.get('http://computer-database.herokuapp.com/computers'));
+
+    it('Page should have a title', () =>
+        expect(browser.getTitle()).toEqual('Computers database'));
+
+    it('App should have expected header', () => {
+        indexPageObject.getPageHeader(indexPageObject.appNameHeader).then((pageHeader) =>
+            expect(pageHeader).toEqual("Play sample application — Computer database"));
     });
 
-    it('Page should have a title', function () {
-        expect(browser.getTitle()).toEqual('Computers database');
-    });
+    it('App should have visible amount of computers on the page header', () =>
+        expect(indexPageObject.computersAmountHeader.isDisplayed()).toBe(true));
 
-    it('App should have expected header', function () {
-        indexPageObject.getPageHeader(indexPageObject.appNameHeader).then(function (pageHeader) {
-            expect(pageHeader).toEqual("Play sample application — Computer database");
-        });
-    });
-    it('App should have visible amount of computers on the page header', function () {
-        expect(indexPageObject.computersAmountHeader.isDisplayed()).toBe(true);
-    });
-
-    it('App should have visible filter input field', function () {
+    it('App should have visible filter input field', () => {
         expect(indexPageObject.filterInputField.isDisplayed()).toBe(true);
         expect(indexPageObject.filterInputField.getText()).toBe('');
     });
-    it('App should have visible filter submit button', function () {
-        expect(indexPageObject.filterSubmitButton.isDisplayed()).toBe(true);
-    });
 
-    it('App should have visible \'Add new computer\' button', function () {
-        expect(indexPageObject.addNewComputerButton.isDisplayed()).toBe(true);
-    });
+    it('App should have visible filter submit button', () =>
+        expect(indexPageObject.filterSubmitButton.isDisplayed()).toBe(true));
 
-    it('App should have visible pagination block', function () {
-        expect(indexPageObject.paginationBlok.isDisplayed()).toBe(true);
-    });
-    it('App should have table with 4 columns', function () {
-        indexPageObject.getTableColumnsAmount().then(function (tableColumnsAmount) {
+    it('App should have visible \'Add new computer\' button', () =>
+        expect(indexPageObject.addNewComputerButton.isDisplayed()).toBe(true));
+
+    it('App should have visible pagination block', () =>
+        expect(indexPageObject.paginationBlok.isDisplayed()).toBe(true));
+
+    it('App should have table with 4 columns', () => {
+        indexPageObject.getTableColumnsAmount().then((tableColumnsAmount) => {
             expect(tableColumnsAmount).toEqual(4);
         });
     });
