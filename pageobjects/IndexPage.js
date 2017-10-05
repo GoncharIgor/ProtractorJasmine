@@ -5,7 +5,6 @@ let BasePage = require('./BasePage');
 class IndexPage extends BasePage {
     constructor() {
         super();
-        this.computersAmountHeader = $('#main>h1');
         this.filterInputField = element(by.id('searchbox'));
         this.filterSubmitButton = element(by.id('searchsubmit'));
         this.addNewComputerButton = element(by.id('add'));
@@ -16,6 +15,10 @@ class IndexPage extends BasePage {
         this.computerIntroducedDateInTheTable = $('.computers.zebra-striped>tbody>tr>td:nth-child(2)');
         this.computerDiscontinuedDateInTheTable = $('.computers.zebra-striped>tbody>tr>td:nth-child(3)');
         this.computerCompanyNameInTheTable = $('.computers.zebra-striped>tbody>tr>td:nth-child(4)');
+    }
+
+    get getAddNewComputerButton(){
+        return this.addNewComputerButton;
     }
 
     getTableColumnsAmount() {
@@ -30,7 +33,7 @@ class IndexPage extends BasePage {
     }
 
     getComputersCount() {
-        return this.computersAmountHeader.getText().then(function (text) {
+        return this.pageHeader.getText().then(function (text) {
             text = text.replace(/[^\/\d]/g, '');
             return text;
         });

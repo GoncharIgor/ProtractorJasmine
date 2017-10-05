@@ -14,7 +14,7 @@ describe('Computer sorting functionality', function () {
     it('Computer should not be added if Computer name field is empty', function () {
         addNewComputerPageObject.addComputer('', introducedDate, discontinuedDate, company);
 
-        addNewComputerPageObject.getPageHeader(addNewComputerPageObject.addComputerHeader).then(function (pageHeader) {
+        addNewComputerPageObject.getAppHeaderText(addNewComputerPageObject.addComputerHeader).then(function (pageHeader) {
             expect(pageHeader).toEqual('Add a computer');
         });
 

@@ -11,6 +11,12 @@ describe('Add new computer functionality works correctly', function () {
         browser.get('http://computer-database.herokuapp.com/computers/new');
     });
 
+    it('Add new computer page should be opened after click [Add New Computer]', () => {
+            browser.get('http://computer-database.herokuapp.com/computers/');
+            indexPageObject.clickButton(indexPageObject.getAddNewComputerButton);
+        }
+    );
+
     it('Computer should be added after filling all the inputs', function () {
         let name = StringUtils.generateRandomString(10);
         let introducedDate = '2017-01-14';
@@ -98,7 +104,7 @@ describe('Add new computer functionality works correctly', function () {
         addNewComputerPageObject.fillInAllFields(name, introducedDate, discontinuedDate, company);
         addNewComputerPageObject.clickCancelButton();
 
-        indexPageObject.getPageHeader(indexPageObject.appNameHeader).then(function (pageHeader) {
+        indexPageObject.getAppHeaderText(indexPageObject.appNameHeader).then(function (pageHeader) {
             expect(pageHeader).toEqual("Play sample application — Computer database");
         });
         //expect(indexPageObject.messageWarning.isDisplayed()).toBe(false);
@@ -125,7 +131,7 @@ describe('Add new computer validation functionality works correctly', function (
     it('Computer should not be added if Computer name field is empty', function () {
         addNewComputerPageObject.addComputer('', introducedDate, discontinuedDate, company);
 
-        addNewComputerPageObject.getPageHeader(addNewComputerPageObject.addComputerHeader).then(function (pageHeader) {
+        addNewComputerPageObject.getAppHeaderText(addNewComputerPageObject.addComputerHeader).then(function (pageHeader) {
             expect(pageHeader).toEqual('Add a computer');
         });
 

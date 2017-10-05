@@ -5,7 +5,6 @@ let BasePage = require('./BasePage');
 class AddNewComputerPage extends BasePage {
     constructor() {
         super();
-        this.addComputerHeader = $('#main>h1');
         this.computerNameInputField = element(by.id('name'));
         this.computerNameInputFieldLabel = $("label[for='name']");
         this.introducedDateInputField = element(by.id('introduced'));
