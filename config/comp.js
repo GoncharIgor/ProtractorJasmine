@@ -1,7 +1,9 @@
-var _ = require('lodash'),
-    baseConfig = require('./base/conf');
+const _ = require('lodash');
+const baseConfig = require('./base/conf');
 
-exports.config = _.merge(baseConfig.config, {
+const config = {
     baseUrl: 'http://computer-database.herokuapp.com/computers',
     specs: ['../tests/compTest.js']
-});
+};
+
+exports.config = _.merge(baseConfig.config, config);

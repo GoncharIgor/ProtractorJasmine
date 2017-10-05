@@ -1,6 +1,6 @@
 # Test automation framework for UI testing
 
-The main goal of this framework is to provide easy, reliable and maintainable automated tests for UI part of the application. It was developed using ECMA 6, Node.js, Protractor and Cucumber.js. 
+The main goal of this framework is to provide easy, reliable and maintainable automated tests for UI part of the application. It was developed using ES6, Node.js, Protractor and Jasmime.
 
 ## Framework installation
 

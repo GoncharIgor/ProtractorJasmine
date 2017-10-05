@@ -1,13 +1,12 @@
-var IndexPage = require('./../pageobjects/IndexPage');
-var AddNewComputerPage = require('./../pageobjects/AddNewComputerPage');
-var EditComputerPage = require('./../pageobjects/EditComputerPage');
-var StringUtils = require('./../utils/StringUtils');
+const IndexPage = require('./../pageobjects/IndexPage');
+const AddNewComputerPage = require('./../pageobjects/AddNewComputerPage');
+const EditComputerPage = require('./../pageobjects/EditComputerPage');
+const StringUtils = require('./../utils/StringUtils');
 
 describe('Computer-database mainPage layout verification', function () {
     let indexPageObject = new IndexPage();
     beforeEach(function () {
-        browser.ignoreSynchronization = true;
-        browser.get('http://computer-database.herokuapp.com/computers');
+        return browser.get('http://computer-database.herokuapp.com/computers');
     });
 
     it('Page should have a title', function () {
@@ -52,7 +51,6 @@ describe('Add new computer page layout verification', function () {
     let addNewComputerPageObject = new AddNewComputerPage();
 
     beforeEach(function () {
-        browser.ignoreSynchronization = true;
         browser.get('http://computer-database.herokuapp.com/computers');
         indexPageObject.clickButton(indexPageObject.addNewComputerButton);
     });
@@ -115,7 +113,6 @@ describe('Add new computer functionality works correctly', function () {
     let addNewComputerPageObject = new AddNewComputerPage();
 
     beforeEach(function () {
-        browser.ignoreSynchronization = true;
         browser.get('http://computer-database.herokuapp.com/computers/new');
     });
 
@@ -146,7 +143,6 @@ describe('Add/delete computer functionality', function () {
     let company = 'Sony';
 
     beforeEach(function () {
-        browser.ignoreSynchronization = true;
         browser.get('http://computer-database.herokuapp.com/computers');
     });
 
@@ -200,7 +196,6 @@ describe('Add new computer functionality works correctly', function () {
     let company = 'Sony';
 
     beforeEach(function () {
-        browser.ignoreSynchronization = true;
         browser.get('http://computer-database.herokuapp.com/computers/new');
     });
 
@@ -229,7 +224,6 @@ describe('Add new computer validation functionality works correctly', function (
     let company = 'Sony';
 
     beforeEach(function () {
-        browser.ignoreSynchronization = true;
         browser.get('http://computer-database.herokuapp.com/computers/new');
     });
 
@@ -254,7 +248,6 @@ describe('Computer sorting functionality', function () {
     let company = 'Sony';
 
     beforeEach(function () {
-        browser.ignoreSynchronization = true;
         browser.get('http://computer-database.herokuapp.com/computers/new');
     });
 
