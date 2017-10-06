@@ -1,9 +1,15 @@
 const log4jsConfig = require('./log4js.conf');
+const AllureReporter = require('jasmine-allure-reporter');
 
 exports.config = {
     //framework: 'jasmine',
     seleniumArgs: ['-browserTimeout=60'],
     ignoreProtectedModeSettings: true,
+
+    params: {
+        allureReportDirectory: './target/allure-xml-report',
+    },
+
     capabilities: {
         browserName: "chrome",
         chromeOptions: {
@@ -31,5 +37,10 @@ exports.config = {
         log4jsConfig.call();
         browser.ignoreSynchronization = true;
         browser.driver.manage().window().maximize();
+
+        //allure reporter
+        jasmine.getEnv().addReporter(new AllureReporter({
+            resultsDir: "./target/allure-xml-report"
+        }));
     }
 };
