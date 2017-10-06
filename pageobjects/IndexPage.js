@@ -17,31 +17,25 @@ class IndexPage extends BasePage {
         this.computerCompanyNameInTheTable = $('.computers.zebra-striped>tbody>tr>td:nth-child(4)');
     }
 
-    get getAddNewComputerButton(){
+    get getAddNewComputerButton() {
         return this.addNewComputerButton;
     }
 
     getTableColumnsAmount() {
-        return this.tableHeaderColumns.count().then(function (count) {
-            return count;
-        });
-
+        return this.tableHeaderColumns.count().then((count) => count);
     }
 
-    navigateToEditComputerPage(){
-        this.computerNamesInTheTable.get(0).click();
+    navigateToEditComputerPage() {
+        return this.computerNamesInTheTable.get(0).click();
     }
 
     getComputersCount() {
-        return this.pageHeader.getText().then(function (text) {
-            text = text.replace(/[^\/\d]/g, '');
-            return text;
-        });
+        return this.pageHeader.getText().then((text) => text.replace(/[^\/\d]/g, ''));
     }
 
     findComputerInTheTable(computerName) {
         this.filterInputField.sendKeys(computerName);
-        this.filterSubmitButton.click();
+        return this.filterSubmitButton.click();
     };
 
     isComputerInfoInTheTableEqualsExpected(initialComputerData) {

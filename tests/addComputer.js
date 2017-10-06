@@ -3,19 +3,18 @@ const AddNewComputerPage = require('./../pageobjects/AddNewComputerPage');
 const EditComputerPage = require('./../pageobjects/EditComputerPage');
 const StringUtils = require('./../utils/StringUtils');
 
-describe('Add new computer functionality works correctly', function () {
+describe('Add new computer functionality works correctly', () => {
     let indexPageObject = new IndexPage();
     let addNewComputerPageObject = new AddNewComputerPage();
 
-    beforeEach(function () {
-        browser.get('http://computer-database.herokuapp.com/computers/new');
-    });
+    beforeEach(() => browser.get('http://computer-database.herokuapp.com/computers/new'));
 
     it('Add new computer page should be opened after click [Add New Computer]', () => {
-            browser.get('http://computer-database.herokuapp.com/computers/');
-            indexPageObject.clickButton(indexPageObject.getAddNewComputerButton);
-        }
-    );
+        browser.get('http://computer-database.herokuapp.com/computers');
+        indexPageObject.clickButton(indexPageObject.getAddNewComputerButton);
+        expect(addNewComputerPageObject.getPageHeaderText()).toEqual('Add a computer');
+    });
+
 
     it('Computer should be added after filling all the inputs', function () {
         let name = StringUtils.generateRandomString(10);

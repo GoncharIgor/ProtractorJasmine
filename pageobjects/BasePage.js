@@ -1,4 +1,5 @@
 'use strict';
+const EC = protractor.ExpectedConditions;
 
 class BasePage {
     constructor() {
@@ -28,6 +29,11 @@ class BasePage {
 
     isElementVisible(element) {
         return element.isDisplayed();
+    }
+
+    waitUntilVisible(elem) {
+        browser.wait(EC.presenceOf(elem), 5000).then(() => browser.wait(EC.visibilityOf(elem), 5000));
+        return elem;
     }
 }
 
