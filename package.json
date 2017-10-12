@@ -1,14 +1,23 @@
 {
   "name": "igor-gonchar-test-projects",
-  "version": "0.0.1",
-  "description": "0.1",
+  "version": "1.0.2",
+  "description": "A test project for computers database",
+  "author": "Igor Gonchar",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GoncharIgor/ProtractorJasmine.git"
+  },
+  "homepage": "http://computer-database.herokuapp.com/",
+  "main": "config/comp.js",
+
   "dependencies": {
     "chai": "^3.5.0",
     "chai-as-promised": "^5.3.0",
     "lodash": "^4.15.0",
     "minimist": "^0.1.0",
     "mkdirp": "~0.3.5",
-    "protractor": "latest",
+    "protractor": "^5.1.2",
     "request-promise": "2.0.1",
     "xml2js": "^0.4.15",
     "moment": "^2.10.6",
@@ -18,12 +27,21 @@
     "log4js": "1.1.1",
     "jasmine-allure-reporter": "1.0.1"
   },
+
+  "devDependencies": {
+    "eslint": "latest",
+    "babel-eslint": "latest",
+    "eslint-plugin-import": "2.2.0",
+    "eslint-config-airbnb-base": "latest"
+  },
+
   "scripts": {
     "wd-update": "node ./node_modules/protractor/bin/webdriver-manager update",
     "wd-start": "node ./node_modules/protractor/bin/webdriver-manager start",
     "wd-status": "webdriver-manager status",
     "wd-clean": "webdriver-manager clean",
     "test": "protractor config/comp.js",
+    "test-multibrowser": "protractor config/multiBrowsers.js",
     "allure-generate-report": "node ./node_modules/allure-commandline/bin/allure generate ./target/allure-xml-report -o ./target/allure-html-report",
     "allure-open-report": "node ./node_modules/allure-commandline/bin/allure report open --report-dir ./target/allure-html-report",
     "allure-clean-report": "node ./node_modules/allure-commandline/bin/allure report clean --report-dir ./target/allure-html-report"

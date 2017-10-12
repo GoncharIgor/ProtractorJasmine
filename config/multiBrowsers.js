@@ -4,12 +4,17 @@ const baseConfig = require('./base/conf');
 const config = {
     baseUrl: 'http://computer-database.herokuapp.com/computers',
     specs: ['../tests/*'],
-    suites: { // --suite=view
-        view: ["../tests/indexPageView.js"]
-    },
     exclude: ['../tests/addComputer.js'],
 
-    capabilities: {
+    multiCapabilities: [{
+        browserName: "firefox",
+        firefoxOptions: {
+            args: ["--disable-infobars"],
+            prefs: {
+                "geo.enabled": false,
+            },
+        },
+    }, {
         browserName: "chrome",
         chromeOptions: {
             args: [
@@ -21,7 +26,12 @@ const config = {
                 password_manager_enabled: false,
             },
         },
-    }
+    }, /* {
+     browserName: "internet explorer",
+     platform: "ANY",
+     version: "11"
+     }*/]
 };
 
 exports.config = _.merge(baseConfig.config, config);
+

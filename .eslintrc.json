@@ -1,0 +1,20 @@
+{
+    "extends": [
+        "eslint-config-airbnb-base"
+    ],
+    "rules": {
+        "quotes": [
+            2,
+            "double"
+        ]
+    },
+    "plugins": [
+        "protractor"
+    ],
+    "env": {
+        "browser": true,
+        "protractor":true,
+        "jasmine":true,
+        "mocha":true
+    }
+}
