@@ -41,7 +41,7 @@ class IndexPage extends BasePage {
     isComputerInfoInTheTableEqualsExpected(initialComputerData) {
         this.findComputerInTheTable(initialComputerData[0]);
 
-        var actualComputerInfo = [];
+        let actualComputerInfo = [];
         this.computerNamesInTheTable.get(0).getText().then(function (text) {
             actualComputerInfo.push(text);
             return text;

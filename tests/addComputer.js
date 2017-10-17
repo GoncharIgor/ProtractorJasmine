@@ -16,7 +16,7 @@ describe('Add new computer functionality works correctly', () => {
     });
 
 
-    it('Computer should be added after filling all the inputs', function () {
+    it('Computer should be added after filling all the inputs', () => {
         let name = StringUtils.generateRandomString(10);
         let introducedDate = '2017-01-14';
         let discontinuedDate = '2017-01-15';
