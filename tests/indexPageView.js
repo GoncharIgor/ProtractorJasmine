@@ -1,4 +1,5 @@
 const IndexPage = require('./../pageobjects/IndexPage');
+const testGen = require('jasmine-es6-generator');
 
 describe('Computer-database index page layout verification', () => {
     let indexPageObject = new IndexPage();
@@ -18,10 +19,10 @@ describe('Computer-database index page layout verification', () => {
     it('Index page header should contain "computers found"', () =>
         expect(indexPageObject.getPageHeaderText()).toContain("computers found"));
 
-    it('App should have visible filter input field', () => {
-        expect(indexPageObject.filterInputField.isDisplayed()).toBe(true);
-        expect(indexPageObject.filterInputField.getText()).toBe('');
-    });
+    it('App should have visible filter input field', testGen(function*() {
+        expect(yield  indexPageObject.filterInputField.isDisplayed()).toBe(true);
+        expect(yield indexPageObject.filterInputField.getText()).toBe('');
+    }));
 
     it('App should have visible filter submit button', () =>
         expect(indexPageObject.filterSubmitButton.isDisplayed()).toBe(true));
@@ -32,11 +33,9 @@ describe('Computer-database index page layout verification', () => {
     it('App should have visible pagination block', () =>
         expect(indexPageObject.paginationBlok.isDisplayed()).toBe(true));
 
-    it('App should have table with 4 columns', () => {
-        indexPageObject.getTableColumnsAmount().then((tableColumnsAmount) => {
-            expect(tableColumnsAmount).toEqual(4);
-        });
-    });
+    it('App should have table with 4 columns', testGen(function*() {
+        expect(yield indexPageObject.getTableColumnsAmount()).toEqual(4);
+    }));
 });
 
 

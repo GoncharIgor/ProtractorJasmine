@@ -42,19 +42,19 @@ class IndexPage extends BasePage {
         this.findComputerInTheTable(initialComputerData[0]);
 
         let actualComputerInfo = [];
-        this.computerNamesInTheTable.get(0).getText().then(function (text) {
+        this.computerNamesInTheTable.get(0).getText().then((text) => {
             actualComputerInfo.push(text);
             return text;
         });
-        this.computerIntroducedDateInTheTable.getText().then(function (text) {
+        this.computerIntroducedDateInTheTable.getText().then((text) => {
             actualComputerInfo.push(text);
             return text;
         });
-        this.computerDiscontinuedDateInTheTable.getText().then(function (text) {
+        this.computerDiscontinuedDateInTheTable.getText().then((text) => {
             actualComputerInfo.push(text);
             return text;
         });
-        this.computerCompanyNameInTheTable.getText().then(function (text) {
+        this.computerCompanyNameInTheTable.getText().then((text) => {
             actualComputerInfo.push(text);
             return text;
         });
