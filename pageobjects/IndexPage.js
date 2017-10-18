@@ -21,8 +21,8 @@ class IndexPage extends BasePage {
         return this.addNewComputerButton;
     }
 
-    getTableColumnsAmount() {
-        return this.tableHeaderColumns.count().then((count) => count);
+    async getTableColumnsAmount() {
+        return await this.tableHeaderColumns.count();
     }
 
     navigateToEditComputerPage() {
