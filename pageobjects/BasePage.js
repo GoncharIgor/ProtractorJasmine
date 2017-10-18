@@ -1,81 +1,80 @@
-'use strict';
 const EC = protractor.ExpectedConditions;
 
 class BasePage {
-    constructor() {
-        this.appNameHeader = $('.fill>a');
-        this.pageHeader = $('#main>h1');
-    }
+  constructor() {
+    this.appNameHeader = $(".fill>a");
+    this.pageHeader = $("#main>h1");
+  }
 
-    getPageTitle() {
-        return browser.getTitle().then((title) => title);
-    }
+  getPageTitle() {
+    return browser.getTitle().then(title => title);
+  }
 
-    get getPageHeader() {
-        return this.pageHeader;
-    }
+  get getPageHeader() {
+    return this.pageHeader;
+  }
 
-    getAppHeaderText() {
-        return this.appNameHeader.getText().then((text) => text);
-    }
+  getAppHeaderText() {
+    return this.appNameHeader.getText().then(text => text);
+  }
 
-    getPageHeaderText() {
-        return this.pageHeader.getText().then((text) => text);
-    }
+  getPageHeaderText() {
+    return this.pageHeader.getText().then(text => text);
+  }
 
-    clickButton(button) {
-        return button.click();
-    }
+  clickButton(button) {
+    return button.click();
+  }
 
-    isElementVisible(element) {
-        return element.isDisplayed();
-    }
+  isElementVisible(element) {
+    return element.isDisplayed();
+  }
 
-    waitUntilVisible(elem) {
-        browser.wait(EC.presenceOf(elem), 5000).then(() => browser.wait(EC.visibilityOf(elem), 5000));
-        return elem;
-    }
+  waitUntilVisible(elem) {
+    browser.wait(EC.presenceOf(elem), 5000).then(() => browser.wait(EC.visibilityOf(elem), 5000));
+    return elem;
+  }
 
-    //default page methods
-    isVisible(locator) {
-        return EC.visibilityOf(locator);
-    }
+  // default page methods
+  isVisible(locator) {
+    return EC.visibilityOf(locator);
+  }
 
-    isNotVisible(locator) {
-        return EC.invisibilityOf(locator);
-    }
+  isNotVisible(locator) {
+    return EC.invisibilityOf(locator);
+  }
 
-    inDom(locator) {
-        return EC.presenceOf(locator);
-    }
+  inDom(locator) {
+    return EC.presenceOf(locator);
+  }
 
-    notInDom(locator) {
-        return EC.stalenessOf(locator);
-    }
+  notInDom(locator) {
+    return EC.stalenessOf(locator);
+  }
 
-    isClickable(locator) {
-        return EC.elementToBeClickable(locator);
-    }
+  isClickable(locator) {
+    return EC.elementToBeClickable(locator);
+  }
 
-    hasText(locator, text) {
-        return EC.textToBePresentInElement(locator, text);
-    }
+  hasText(locator, text) {
+    return EC.textToBePresentInElement(locator, text);
+  }
 
-    and(arrayOfFunctions) {
-        return EC.and(arrayOfFunctions);
-    }
+  and(arrayOfFunctions) {
+    return EC.and(arrayOfFunctions);
+  }
 
-    titleIs(title) {
-        return EC.titleIs(title);
-    }
+  titleIs(title) {
+    return EC.titleIs(title);
+  }
 
-    hitEnter() {
-        return browser.actions().sendKeys(protractor.Key.ENTER).perform();
-    }
+  hitEnter() {
+    return browser.actions().sendKeys(protractor.Key.ENTER).perform();
+  }
 
-    clickTab() {
-        return $('body').sendKeys(protractor.Key.TAB);
-    }
+  clickTab() {
+    return $("body").sendKeys(protractor.Key.TAB);
+  }
 }
 
 module.exports = BasePage;

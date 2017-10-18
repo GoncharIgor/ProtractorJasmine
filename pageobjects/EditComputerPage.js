@@ -1,17 +1,14 @@
-'use strict';
-
-let BasePage = require('./BasePage');
+const BasePage = require("./BasePage");
 
 class EditComputerPage extends BasePage {
-    constructor() {
-        super();
-        this.deleteThisComputerButton = $('.btn.danger');
-    }
+  constructor() {
+    super();
+    this.deleteThisComputerButton = $(".btn.danger");
+  }
 
-    deleteComputer(){
-        this.deleteThisComputerButton.click();
-    }
-
+  deleteComputer() {
+    this.deleteThisComputerButton.click();
+  }
 }
 
 module.exports = EditComputerPage;
