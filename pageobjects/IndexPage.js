@@ -1,4 +1,5 @@
 const BasePage = require("./BasePage");
+const Helpers = require("./../utils/helpers");
 
 class IndexPage extends BasePage {
   constructor() {
@@ -8,6 +9,12 @@ class IndexPage extends BasePage {
     this.addNewComputerButton = element(by.id("add"));
     this.tableHeaderColumns = element.all(by.tagName("th"));
     this.paginationBlok = element(by.id("pagination"));
+
+    this.currentPaginationInfo = $(".current a");
+    this.paginationNextButton = element(by.xpath("//a[contains(text(), \"Next\")]"));
+    this.paginationPreviousButton = element(by.xpath("//a[contains(text(), \"Previous\")]"));
+    this.paginationPreviousButtonWrapper = $("ul>li:nth-child(1)");
+
     this.messageWarning = $(".alert-message.warning");
     this.computerNamesInTheTable = element.all(by.css(".computers.zebra-striped>tbody>tr>td>a"));
     this.computerIntroducedDateInTheTable = $(".computers.zebra-striped>tbody>tr>td:nth-child(2)");
@@ -40,25 +47,30 @@ class IndexPage extends BasePage {
     this.findComputerInTheTable(initialComputerData[0]);
 
     const actualComputerInfo = [];
-    this.computerNamesInTheTable.get(0).getText().then((text) => {
-      actualComputerInfo.push(text);
-      return text;
-    });
-    this.computerIntroducedDateInTheTable.getText().then((text) => {
-      actualComputerInfo.push(text);
-      return text;
-    });
-    this.computerDiscontinuedDateInTheTable.getText().then((text) => {
-      actualComputerInfo.push(text);
-      return text;
-    });
-    this.computerCompanyNameInTheTable.getText().then((text) => {
-      actualComputerInfo.push(text);
-      return text;
-    });
+    return protractor.promise.all([
+      this.computerNamesInTheTable.get(0).getText().then(text => actualComputerInfo.push(text)),
+      this.computerIntroducedDateInTheTable.getText().then(text => actualComputerInfo.push(text)),
+      this.computerDiscontinuedDateInTheTable.getText().then(text => actualComputerInfo.push(text)),
+      this.computerCompanyNameInTheTable.getText().then(text => actualComputerInfo.push(text)),
+    ]).then(() => Helpers.arraysEqual(initialComputerData, actualComputerInfo));
   }
 
-  // TODO return the array
+  getPaginationBlockText() {
+    return this.currentPaginationInfo.getText().then(text => text);
+  }
+
+  getTotalAmountOfComputersInPagination() {
+    return this.currentPaginationInfo.getText().then(text => Helpers.splitStringIntoArrayByAndGetIndex(text, " ", "last"));
+  }
+
+  getIdOfComputerByName(name) {
+    // await browser.actions().keyDown(protractor.Key.CONTROL).sendKeys('t').perform();
+    // return $('body').sendKeys(protractor.Key.TAB);
+    browser.get("http://computer-database.herokuapp.com/computers");
+    this.findComputerInTheTable(name);
+    this.computerNamesInTheTable.get(0).click();
+    return browser.getCurrentUrl().then(actualUrl => actualUrl.substr(actualUrl.lastIndexOf("/") + 1));
+  }
 }
 
 module.exports = IndexPage;

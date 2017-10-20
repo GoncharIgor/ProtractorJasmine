@@ -22,7 +22,9 @@ class AddNewComputerPage extends BasePage {
 
   addComputer(name, introducedDate, discontinuedDate, company) {
     this.fillInAllFields(name, introducedDate, discontinuedDate, company);
-    return this.createThisComputerButton.click();
+     this.createThisComputerButton.click();
+     this.logger.info(`Computer ${name} was added to DB`);
+     return name;
   }
 
   fillInAllFields(name, introducedDate, discontinuedDate, company) {

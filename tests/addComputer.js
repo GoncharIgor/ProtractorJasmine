@@ -1,13 +1,12 @@
 const IndexPage = require("./../pageobjects/IndexPage");
 const AddNewComputerPage = require("./../pageobjects/AddNewComputerPage");
 const EditComputerPage = require("./../pageobjects/EditComputerPage");
-const StringUtils = require("./../utils/StringUtils");
+const Helpers = require("./../utils/helpers");
 const ComputerApi = require("./../utils/ComputersApi");
 
 describe("Add new computer functionality works correctly", () => {
   const indexPageObject = new IndexPage();
   const addNewComputerPageObject = new AddNewComputerPage();
-  const computerApi = new ComputerApi();
 
   beforeEach(() => browser.get("http://computer-database.herokuapp.com/computers/new"));
 
@@ -18,27 +17,25 @@ describe("Add new computer functionality works correctly", () => {
   });
 
   it("Computer should be added after filling all the inputs", () => {
-    const name = StringUtils.generateRandomString(10);
+    const name = Helpers.generateRandomString(10);
     const introducedDate = "2017-01-14";
     const discontinuedDate = "2017-01-15";
     const company = "Sony";
-    const initialComputerData = [name, "14 Jan 2017", "15 Jan 2017", company];
+    const expectedComputerData = [name, "14 Jan 2017", "15 Jan 2017", company];
     addNewComputerPageObject.addComputer(name, introducedDate, discontinuedDate, company);
 
     expect(indexPageObject.messageWarning.isDisplayed()).toBe(true);
-    indexPageObject.isComputerInfoInTheTableEqualsExpected(initialComputerData);
+    expect(indexPageObject.isComputerInfoInTheTableEqualsExpected(expectedComputerData)).toBe(true);
   });
 
   it("Computer should be added by POST method", () => {
-    const name = StringUtils.generateRandomString(10);
-    const introducedDate = "2017-01-14";
-    const discontinuedDate = "2017-01-15";
-    const company = "Sony";
-    const initialComputerData = [name, "14 Jan 2017", "15 Jan 2017", company];
+      const computerApi = new ComputerApi();
+   const  name = Helpers.generateRandomString(10);
 
-    addNewComputerPageObject.addComputer(name, introducedDate, discontinuedDate, company);
-    expect(indexPageObject.messageWarning.isDisplayed()).toBe(true);
-    indexPageObject.isComputerInfoInTheTableEqualsExpected(initialComputerData);
+      const expectedComputerData = [name, "14 Jan 2017", "15 Jan 2017", "Sony"];
+      computerApi.addComputer(name, "2017-01-14", "2017-01-15", "2");
+
+      expect(indexPageObject.isComputerInfoInTheTableEqualsExpected(expectedComputerData)).toBe(true);
   });
 });
 
@@ -48,7 +45,7 @@ describe("Add/delete computer functionality", () => {
   const addNewComputerPageObject = new AddNewComputerPage();
   const editComputerPageObject = new EditComputerPage();
 
-  const name = StringUtils.generateRandomString(10);
+  const name = Helpers.generateRandomString(10);
   const introducedDate = "2017-01-14";
   const discontinuedDate = "2017-01-15";
   const company = "Sony";
@@ -91,7 +88,7 @@ describe("Add new computer functionality works correctly", () => {
   const indexPageObject = new IndexPage();
   const addNewComputerPageObject = new AddNewComputerPage();
 
-  const name = StringUtils.generateRandomString(10);
+  const name = Helpers.generateRandomString(10);
   const introducedDate = "2017-01-14";
   const discontinuedDate = "2017-01-15";
   const company = "Sony";
@@ -114,7 +111,7 @@ describe("Add new computer functionality works correctly", () => {
 describe("Add new computer validation functionality works correctly", () => {
   const addNewComputerPageObject = new AddNewComputerPage();
 
-  const name = StringUtils.generateRandomString(10);
+  const name = Helpers.generateRandomString(10);
   const introducedDate = "2017-01-14";
   const discontinuedDate = "2017-01-15";
   const company = "Sony";
@@ -131,3 +128,29 @@ describe("Add new computer validation functionality works correctly", () => {
   });
 });
 
+describe("Add new computer Object style functionality works correctly", () => {
+  const testComputerInitial = require("./../testData/computer.json");
+  const Computer = require("./../domains/Computer");
+
+  beforeEach(() => {
+    browser.get("http://computer-database.herokuapp.com/computers/new");
+  });
+
+  it("Computer should be added after filling all the inputs", () => {
+    const testComputer = Helpers.clone(testComputerInitial);
+    const indexPageObject = new IndexPage();
+
+    const name = Helpers.generateRandomString(10);
+    testComputer.name = name;
+    const computer = new Computer(
+      testComputer.name, testComputer.introducedDate,
+      testComputer.discontinuedDate, testComputer.company,
+    );
+    const initialComputerData = [name, "14 Jan 2017", "15 Jan 2017", testComputer.company];
+
+    computer.addThisComputer();
+
+    expect(indexPageObject.messageWarning.isDisplayed()).toBe(true);
+    indexPageObject.isComputerInfoInTheTableEqualsExpected(initialComputerData);
+  });
+});

@@ -1,13 +1,13 @@
-const BasePage = require("./BasePage");
+const AddNewComputerPage = require("./AddNewComputerPage");
 
-class EditComputerPage extends BasePage {
+class EditComputerPage extends AddNewComputerPage {
   constructor() {
     super();
     this.deleteThisComputerButton = $(".btn.danger");
   }
 
   deleteComputer() {
-    this.deleteThisComputerButton.click();
+    return this.deleteThisComputerButton.click();
   }
 }
 
