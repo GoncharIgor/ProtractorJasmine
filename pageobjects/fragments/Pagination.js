@@ -1,34 +1,37 @@
-class Pagination {
-    constructor(rootElement) {
-        this.currentPaginationInfo = $(".current a");
-        this.paginationNextButton = element(by.xpath("//a[contains(text(), \"Next\")]"));
-        this.paginationPreviousButton = element(by.xpath("//a[contains(text(), \"Previous\")]"));
-        this.paginationPreviousButtonWrapper = $("ul>li:nth-child(1)");
-    }
+const BaseFragment = require("protractor-element-extend").BaseFragment;
 
-    get getPaginationNextButton(){
-        return this.paginationNextButton;
-    }
+class Pagination extends BaseFragment {
+  constructor(rootElement) {
+    super(rootElement);
+    this.currentPaginationInfo = $(".current a");
+    this.paginationNextButton = element(by.xpath("//a[contains(text(), \"Next\")]"));
+    this.paginationPreviousButton = element(by.xpath("//a[contains(text(), \"Previous\")]"));
+    this.paginationPreviousButtonWrapper = $("ul>li:nth-child(1)");
+  }
 
-    get getPaginationPreviousButton(){
-        return this.paginationPreviousButton;
-    }
+  get getPaginationNextButton() {
+    return this.paginationNextButton;
+  }
 
-    getPaginationBlockText() {
-        return this.currentPaginationInfo.getText().then(text => text);
-    }
+  get getPaginationPreviousButton() {
+    return this.paginationPreviousButton;
+  }
 
-    getTotalAmountOfComputersInPagination() {
-        return this.currentPaginationInfo.getText().then(text => Helpers.splitStringIntoArrayByAndGetIndex(text, " ", "last"));
-    }
+  getPaginationBlockText() {
+    return this.currentPaginationInfo.getText().then(text => text);
+  }
 
-    clickNextButton(){
-        return this.getPaginationNextButton.click();
-    }
+  getTotalAmountOfComputersInPagination() {
+    return this.currentPaginationInfo.getText().then(text => Helpers.splitStringIntoArrayByAndGetIndex(text, " ", "last"));
+  }
 
-    clickPreviousButton(){
-        return this.getPaginationPreviousButton.click();
-    }
+  clickNextButton() {
+    return this.getPaginationNextButton.click();
+  }
+
+  clickPreviousButton() {
+    return this.getPaginationPreviousButton.click();
+  }
 }
 
 module.exports = Pagination;
