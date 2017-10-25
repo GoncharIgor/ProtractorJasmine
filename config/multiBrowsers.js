@@ -4,7 +4,6 @@ const baseConfig = require("./base/conf");
 const config = {
   baseUrl: "http://computer-database.herokuapp.com/computers",
   specs: ["../tests/*"],
-  exclude: ["../tests/addComputer.js"],
 
   multiCapabilities: [{
     browserName: "firefox",
@@ -31,6 +30,7 @@ const config = {
      platform: "ANY",
      version: "11"
      } */],
+    maxSessions: 1 //to run browsers one by one
 };
 
 exports.config = _.merge(baseConfig.config, config);

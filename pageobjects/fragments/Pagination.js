@@ -4,8 +4,8 @@ class Pagination extends BaseFragment {
   constructor(rootElement) {
     super(rootElement);
     this.currentPaginationInfo = $(".current a");
-    this.paginationNextButton = element(by.xpath("//a[contains(text(), \"Next\")]"));
-    this.paginationPreviousButton = element(by.xpath("//a[contains(text(), \"Previous\")]"));
+    this.paginationNextButton = element(by.xpath("//a[contains(text(), 'Next')]"));
+    this.paginationPreviousButton = element(by.xpath("//a[contains(text(),'Previous')]"));
     this.paginationPreviousButtonWrapper = $("ul>li:nth-child(1)");
   }
 
@@ -14,7 +14,7 @@ class Pagination extends BaseFragment {
   }
 
   get getPaginationPreviousButton() {
-    return this.paginationPreviousButton;
+      return this.paginationPreviousButton;
   }
 
   getPaginationBlockText() {

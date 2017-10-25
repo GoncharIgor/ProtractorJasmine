@@ -14,28 +14,28 @@ describe("Add new computer page layout verification", () => {
     expect(addNewComputerPageObject.getPageHeaderText()).toEqual("Add a computer"));
 
   it("Add new computer page should have visible computer name input", () =>
-    expect(addNewComputerPageObject.computerNameInputField.isDisplayed()).toBe(true));
+    expect(addNewComputerPageObject.getAddComputerFormFields.computerNameInputField.isDisplayed()).toBe(true));
 
   it("Add new computer page should have visible label for computer name input", () =>
-    expect(addNewComputerPageObject.computerNameInputFieldLabel.isDisplayed()).toBe(true));
+    expect(addNewComputerPageObject.getAddComputerFormFields.computerNameInputFieldLabel.isDisplayed()).toBe(true));
 
   it("Add new computer page should have visible Introduced date input", () =>
-    expect(addNewComputerPageObject.introducedDateInputField.isDisplayed()).toBe(true));
+    expect(addNewComputerPageObject.getAddComputerFormFields.introducedDateInputField.isDisplayed()).toBe(true));
 
   it("Add new computer page should have visible label for Introduced date input", () =>
-    expect(addNewComputerPageObject.introducedDateInputFieldLabel.isDisplayed()).toBe(true));
+    expect(addNewComputerPageObject.getAddComputerFormFields.introducedDateInputFieldLabel.isDisplayed()).toBe(true));
 
   it("Add new computer page should have visible Discontinued date input", () =>
-    expect(addNewComputerPageObject.discontinuedDateInputField.isDisplayed()).toBe(true));
+    expect(addNewComputerPageObject.getAddComputerFormFields.discontinuedDateInputField.isDisplayed()).toBe(true));
 
   it("Add new computer page should have visible label for Discontinued date input", () =>
-    expect(addNewComputerPageObject.discontinuedDateInputFieldLabel.isDisplayed()).toBe(true));
+    expect(addNewComputerPageObject.getAddComputerFormFields.discontinuedDateInputFieldLabel.isDisplayed()).toBe(true));
 
   it("Add new computer page should have visible Select company selectbox", () =>
-    expect(addNewComputerPageObject.companySelectBox.isDisplayed()).toBe(true));
+    expect(addNewComputerPageObject.getAddComputerFormFields.companySelectBox.isDisplayed()).toBe(true));
 
   it("Add new computer page should have visible label for Select company selectbox", () =>
-    expect(addNewComputerPageObject.companySelectBoxLabel.isDisplayed()).toBe(true));
+    expect(addNewComputerPageObject.getAddComputerFormFields.companySelectBoxLabel.isDisplayed()).toBe(true));
 
   it("Add new computer page should have visible Create this computer button", () =>
     expect(addNewComputerPageObject.createThisComputerButton.isDisplayed()).toBe(true));
