@@ -23,7 +23,8 @@
     "rimraf": "2.5.1",
     "log4js": "1.1.1",
     "jasmine-allure-reporter": "1.0.1",
-    "jasmine-es6-generator": "0.1.0"
+    "jasmine-es6-generator": "0.1.0",
+    "protractor-element-extend": "2.1.0"
   },
   "devDependencies": {
     "eslint": "latest",

@@ -1,4 +1,4 @@
-const AddNewComputerPage = require("./../pageobjects/AddNewComputerPage");
+const AddNewComputerPage = require("./../pageobjects/pages/AddNewComputerPage");
 
 describe("Add new computer page layout verification", () => {
   const addNewComputerPageObject = new AddNewComputerPage();

@@ -1,4 +1,4 @@
-const IndexPage = require("./../pageobjects/IndexPage");
+const IndexPage = require("./../pageobjects/pages/IndexPage");
 const testGen = require("jasmine-es6-generator");
 
 describe("Computer-database index page layout verification", () => {

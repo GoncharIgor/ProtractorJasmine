@@ -1,4 +1,4 @@
-const AddNewComputerPage = require("./../pageobjects/AddNewComputerPage");
+const AddNewComputerPage = require("./../pageobjects/pages/AddNewComputerPage");
 
 describe("Computer sorting functionality", () => {
   const addNewComputerPageObject = new AddNewComputerPage();
