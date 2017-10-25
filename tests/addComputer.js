@@ -3,6 +3,7 @@ const AddNewComputerPage = require("./../pageobjects/AddNewComputerPage");
 const EditComputerPage = require("./../pageobjects/EditComputerPage");
 const Helpers = require("./../utils/helpers");
 const ComputerApi = require("./../utils/ComputersApi");
+const testComputerInitial = require("./../testData/computer.json");
 
 describe("Add new computer functionality works correctly", () => {
   const indexPageObject = new IndexPage();
@@ -17,10 +18,12 @@ describe("Add new computer functionality works correctly", () => {
   });
 
   it("Computer should be added after filling all the inputs", () => {
+    const testComputer = Helpers.clone(testComputerInitial);
+
     const name = Helpers.generateRandomString(10);
-    const introducedDate = "2017-01-14";
-    const discontinuedDate = "2017-01-15";
-    const company = "Sony";
+    const introducedDate = testComputer.introducedDate;
+    const discontinuedDate = testComputer.discontinuedDate;
+    const company = testComputer.company;
     const expectedComputerData = [name, "14 Jan 2017", "15 Jan 2017", company];
     addNewComputerPageObject.addComputer(name, introducedDate, discontinuedDate, company);
 
@@ -28,14 +31,16 @@ describe("Add new computer functionality works correctly", () => {
     expect(indexPageObject.isComputerInfoInTheTableEqualsExpected(expectedComputerData)).toBe(true);
   });
 
-  it("Computer should be added by POST method", () => {
-      const computerApi = new ComputerApi();
-   const  name = Helpers.generateRandomString(10);
+  it("Computer should be added by POST method", async () => {
+    const computerApi = new ComputerApi();
+    const name = Helpers.generateRandomString(10);
 
-      const expectedComputerData = [name, "14 Jan 2017", "15 Jan 2017", "Sony"];
-      computerApi.addComputer(name, "2017-01-14", "2017-01-15", "2");
+    const expectedComputerData = [name, "14 Jan 2017", "15 Jan 2017", "Thinking Machines"];
+    computerApi.addComputer(name, "2017-01-14", "2017-01-15", "2");
 
-      expect(indexPageObject.isComputerInfoInTheTableEqualsExpected(expectedComputerData)).toBe(true);
+    browser.get("http://computer-database.herokuapp.com/computers");
+
+    expect(indexPageObject.isComputerInfoInTheTableEqualsExpected(expectedComputerData)).toBe(true);
   });
 });
 

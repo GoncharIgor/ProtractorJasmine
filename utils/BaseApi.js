@@ -1,9 +1,11 @@
 const rp = require("request-promise");
 const _ = require("lodash");
+const log4js = require('log4js');
 
 class BaseApi {
   constructor() {
     const api = this;
+      this.logger = log4js.getLogger("BaseApiLogger");
 
     api.defaultRequest = {
       headers: {

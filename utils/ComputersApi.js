@@ -29,6 +29,7 @@ class ComputersApi extends BaseApi {
   }
 
   addComputer(name, introduced, discontinued, company) {
+     this.logger.info(`Trying to create computer with name: ${name}`);
     return this.send(this.requests.computers.addComputer(name, introduced, discontinued, company));
   }
 }
