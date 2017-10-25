@@ -14,7 +14,7 @@ class IndexPage extends BasePage {
   }
 
   navigateToEditComputerPage() {
-    return this.computerNamesInTheTable.get(0).click();
+    return this.getComputerTable.computerNamesInTheTable.get(0).click();
   }
 
   getComputersCount() {

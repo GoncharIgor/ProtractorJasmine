@@ -5,7 +5,7 @@ const log4js = require('log4js');
 class BaseApi {
   constructor() {
     const api = this;
-      this.logger = log4js.getLogger("BaseApiLogger");
+      this.logger = log4js.getLogger("cheese");
 
     api.defaultRequest = {
       headers: {

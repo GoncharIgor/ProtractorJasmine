@@ -7,7 +7,7 @@ module.exports = () => {
         type: "console",
         level: log4js.levels.WARN,
       },
-      // { type: 'file', filename: 'logs/cheese.log', category: 'cheese' }
+       { type: 'file', filename: `target/logs/computers.log`, category: 'cheese' }
     ],
     levels: {
       "[all]": log4js.levels.ALL,

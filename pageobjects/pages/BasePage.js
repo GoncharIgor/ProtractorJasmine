@@ -5,7 +5,8 @@ class BasePage {
   constructor() {
     this.appNameHeader = $(".fill>a");
     this.pageHeader = $("#main>h1");
-    this.logger = log4js.getLogger("BasePageLogger");
+   // this.logger = log4js.getLogger("BasePageLogger");
+    this.logger = log4js.getLogger("cheese");
   }
 
   getPageTitle() {

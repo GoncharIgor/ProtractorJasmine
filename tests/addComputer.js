@@ -5,7 +5,7 @@ const Helpers = require("./../utils/helpers");
 const ComputerApi = require("./../utils/ComputersApi");
 const testComputerInitial = require("./../testData/computer.json");
 
-describe("Add new computer functionality works correctly", () => {
+ describe("Add new computer functionality works correctly", () => {
   const indexPageObject = new IndexPage();
   const addNewComputerPageObject = new AddNewComputerPage();
 
@@ -28,7 +28,7 @@ describe("Add new computer functionality works correctly", () => {
     addNewComputerPageObject.addComputer(name, introducedDate, discontinuedDate, company);
 
     expect(indexPageObject.messageWarning.isDisplayed()).toBe(true);
-    expect(indexPageObject.isComputerInfoInTheTableEqualsExpected(expectedComputerData)).toBe(true);
+    expect(indexPageObject.getComputerTable.isComputerInfoInTheTableEqualsExpected(expectedComputerData)).toBe(true);
   });
 
   it("Computer should be added by POST method", async () => {
@@ -40,7 +40,7 @@ describe("Add new computer functionality works correctly", () => {
 
     browser.get("http://computer-database.herokuapp.com/computers");
 
-    expect(indexPageObject.isComputerInfoInTheTableEqualsExpected(expectedComputerData)).toBe(true);
+    expect(indexPageObject.getComputerTable.isComputerInfoInTheTableEqualsExpected(expectedComputerData)).toBe(true);
   });
 });
 
@@ -70,7 +70,7 @@ describe("Add/delete computer functionality", () => {
 
   it("Computers total amount should be decreased by 1 after deleting the computer", async () => {
     const initialTotal = await indexPageObject.getComputersCount();
-    indexPageObject.findComputerInTheTable(name);
+    indexPageObject.getComputerSearchForm.findComputerInTheTable(name);
     indexPageObject.navigateToEditComputerPage();
     editComputerPageObject.deleteComputer();
     const resultTotal = await indexPageObject.getComputersCount();
@@ -103,7 +103,7 @@ describe("Add new computer functionality works correctly", () => {
   });
 
   it("Computer should not be added if all fields are entered but Cancel button is clicked", () => {
-    addNewComputerPageObject.fillInAllFields(name, introducedDate, discontinuedDate, company);
+    addNewComputerPageObject.getAddComputerFormFields.fillInAllFields(name, introducedDate, discontinuedDate, company);
     addNewComputerPageObject.clickCancelButton();
 
     expect(indexPageObject.getAppHeaderText()).toEqual("Play sample application — Computer database");
@@ -156,6 +156,6 @@ describe("Add new computer Object style functionality works correctly", () => {
     computer.addThisComputer();
 
     expect(indexPageObject.messageWarning.isDisplayed()).toBe(true);
-    indexPageObject.isComputerInfoInTheTableEqualsExpected(initialComputerData);
+    indexPageObject.getComputerTable.isComputerInfoInTheTableEqualsExpected(initialComputerData);
   });
 });
