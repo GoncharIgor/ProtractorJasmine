@@ -9,8 +9,7 @@ describe("Computer-database index page layout verification", () => {
     expect(indexPageObject.getPageTitle()).toEqual("Computers database"));
 
   it("App should have expected header", () => {
-    indexPageObject.getAppHeaderText().then(pageHeader =>
-      expect(pageHeader).toEqual("Play sample application — Computer database"));
+      expect(indexPageObject.getAppHeaderText()).toEqual("Play sample application — Computer database");
   });
 
   it("App should have visible amount of computers on the page header", () =>

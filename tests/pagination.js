@@ -20,6 +20,16 @@ describe("Computer-database index page layout verification", () => {
     expect(indexPageObject.getPagination.getPaginationNextButton.isEnabled()).toBe(true);
   });
 
+  it("Pagination PREVIOUS button should be disabled", async () => {
+    const previousButtonClassAttributeValue = await indexPageObject.getPagination.getPaginationPreviousButtonParentWrapper.getAttribute("class");
+    expect(previousButtonClassAttributeValue).toContain("disabled");
+  });
+
+  it("Pagination NEXT button should be enabled", async () => {
+    const nextButtonClassAttributeValue = await indexPageObject.getPagination.getPaginationNextButtonParentWrapper.getAttribute("class");
+    expect(nextButtonClassAttributeValue).not.toContain("disabled");
+  });
+
   it("Pagination PREVIOUS button should be visible", () => {
     expect(indexPageObject.getPagination.getPaginationPreviousButton.isDisplayed()).toBe(true);
   });
@@ -47,5 +57,21 @@ describe("Computer-database index page layout verification", () => {
     indexPageObject.getPagination.clickNextButton();
     indexPageObject.refreshPage();
     expect(await indexPageObject.getPagination.getPaginationBlockText()).toEqual(`Displaying 11 to 20 of ${initialTotal}`);
+  });
+
+
+  it("Next button has to be disabled at the end of the test", async () => {
+    const initialTotal = await indexPageObject.getComputersCount() - 1;
+    const numberOfPages = Math.floor(initialTotal / 10);
+
+    for (let i = 0; i < numberOfPages; i++) {
+      indexPageObject.getPagination.clickNextButton();
+      await browser.sleep(10);
+    }
+    const nextButtonClassAttributeValue = await indexPageObject.getPagination.getPaginationNextButtonParentWrapper.getAttribute("class");
+    expect(nextButtonClassAttributeValue).toContain("disabled");
+
+    const previousButtonClassAttributeValue = await indexPageObject.getPagination.getPaginationPreviousButtonParentWrapper.getAttribute("class");
+    expect(previousButtonClassAttributeValue).not.toContain("disabled");
   });
 });

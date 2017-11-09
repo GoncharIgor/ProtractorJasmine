@@ -3,18 +3,30 @@ const BaseFragment = require("protractor-element-extend").BaseFragment;
 class Pagination extends BaseFragment {
   constructor(rootElement) {
     super(rootElement);
+    this.paginationNextButtonParentWrapperSelector = "/parent::li";
+    this.paginationNextButtonSelector = "//a[contains(text(), 'Next')]";
+    this.paginationPreviousButtonSelector = "//a[contains(text(),'Previous')]";
     this.currentPaginationInfo = $(".current a");
-    this.paginationNextButton = element(by.xpath("//a[contains(text(), 'Next')]"));
-    this.paginationPreviousButton = element(by.xpath("//a[contains(text(),'Previous')]"));
-    this.paginationPreviousButtonWrapper = $("ul>li:nth-child(1)");
+    this.paginationNextButton = element(by.xpath(this.paginationNextButtonSelector));
+    this.paginationPreviousButton = element(by.xpath(this.paginationPreviousButtonSelector));
+    this.paginationNextButtonParentWrapper = element(by.xpath(`${this.paginationNextButtonSelector}${this.paginationNextButtonParentWrapperSelector}`));
+    this.paginationPreviousButtonParentWrapper = element(by.xpath(`${this.paginationPreviousButtonSelector}${this.paginationNextButtonParentWrapperSelector}`));
+  }
+
+  get getPaginationPreviousButton() {
+    return this.paginationPreviousButton;
   }
 
   get getPaginationNextButton() {
     return this.paginationNextButton;
   }
 
-  get getPaginationPreviousButton() {
-      return this.paginationPreviousButton;
+  get getPaginationPreviousButtonParentWrapper() {
+    return this.paginationPreviousButtonParentWrapper;
+  }
+
+  get getPaginationNextButtonParentWrapper() {
+    return this.paginationNextButtonParentWrapper;
   }
 
   getPaginationBlockText() {

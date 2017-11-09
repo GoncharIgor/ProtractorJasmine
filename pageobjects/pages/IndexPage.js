@@ -34,16 +34,16 @@ class IndexPage extends BasePage {
     return this.addNewComputerButton;
   }
 
-  get getPagination() {
-    return this.paginationBlok;
+  get getComputerSearchForm() {
+    return this.computerSearchForm;
   }
 
   get getComputerTable() {
     return this.computerTable;
   }
 
-  get getComputerSearchForm() {
-    return this.computerSearchForm;
+  get getPagination() {
+    return this.paginationBlok;
   }
 }
 

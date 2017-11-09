@@ -28,6 +28,8 @@ class BaseApi {
       .then(res => (isJson ? res.body : res))
       .catch((err) => {
         console.log("AN ERROR OCCURRED");
+        this.logger.error(`${err.statusCode} - ${err.message} - ${err.error}`);
+       // this.logger.error(err.stack);
       });
   }
 }
