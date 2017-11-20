@@ -15,6 +15,7 @@
     "http-proxy": "^1.16.2",
     "jasmine-allure-reporter": "1.0.1",
     "jasmine-es6-generator": "0.1.0",
+    "jasmine-spec-reporter": "3.3.0",
     "lodash": "^4.15.0",
     "log4js": "1.1.1",
     "minimist": "^0.1.0",

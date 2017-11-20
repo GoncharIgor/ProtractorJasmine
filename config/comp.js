@@ -3,7 +3,7 @@ const baseConfig = require("./base/conf");
 
 const config = {
   baseUrl: "http://computer-database.herokuapp.com/computers",
-  specs: ["../tests/addComputer.js"],
+  specs: ["../tests/*.js"],
   suites: { // --suite=view
     view: ["../tests/*"],
   },
@@ -14,6 +14,7 @@ const config = {
     chromeOptions: {
       args: [
         "--disable-infobars",
+        'disable-extensions'
       ],
       prefs: {
         "profile.password_manager_enabled": false,
