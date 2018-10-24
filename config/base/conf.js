@@ -19,9 +19,8 @@ exports.config = {
   allScriptsTimeout: 60000,
   // How long to wait for a page to load.
   getPageTimeout: 60000,
-
-  seleniumAddress: "http://localhost:4444/wd/hub",
-
+    //to remove if selenoid config is used
+    seleniumAddress: "http://localhost:4444/wd/hub",
     jasmineNodeOpts: {
         defaultTimeoutInterval: 100000,
         print: function () {
@@ -31,6 +30,7 @@ exports.config = {
   onPrepare: () => {
     log4jsConfig.call();
     browser.ignoreSynchronization = true;
+    //to remove if selenoid is used
     browser.driver.manage().window().maximize();
 
     // allure reporter

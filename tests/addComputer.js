@@ -12,7 +12,7 @@ const testComputerInitial = require("./../testData/computer.json");
   beforeEach(() => browser.get("http://computer-database.herokuapp.com/computers/new"));
 
   it("Add new computer page should be opened after click [Add New Computer]", () => {
-    browser.get("http://computer-database.herokuapp.com/computers");
+          browser.get("http://computer-database.herokuapp.com/computers");
     indexPageObject.clickButton(indexPageObject.getAddNewComputerButton);
     expect(addNewComputerPageObject.getPageHeaderText()).toEqual("Add a computer");
   });
