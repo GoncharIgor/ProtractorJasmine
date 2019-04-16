@@ -10,6 +10,7 @@ const config = {
         'platform': 'ANY',
         'ignoreProtectedModeSettings': true,
         'ignoreZoomSetting': true,
+        'INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS': true,
         'version': '11'
     },
 };
