@@ -1,12 +1,12 @@
 const EC = protractor.ExpectedConditions;
-const log4js = require("log4js");
+const log4js = require('log4js');
 
 class BasePage {
   constructor() {
-    this.appNameHeader = $(".fill>a");
-    this.pageHeader = $("#main>h1");
+    this.appNameHeader = $('.fill>a');
+    this.pageHeader = $('#main>h1');
     // this.logger = log4js.getLogger("BasePageLogger");
-    this.logger = log4js.getLogger("cheese");
+    this.logger = log4js.getLogger('cheese');
   }
 
   getPageTitle() {
@@ -76,7 +76,7 @@ class BasePage {
   }
 
   clickTab() {
-    return $("body").sendKeys(protractor.Key.TAB);
+    return $('body').sendKeys(protractor.Key.TAB);
   }
 
   refreshPage() {

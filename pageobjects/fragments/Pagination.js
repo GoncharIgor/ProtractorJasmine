@@ -1,12 +1,12 @@
-const BaseFragment = require("protractor-element-extend").BaseFragment;
+const BaseFragment = require('protractor-element-extend').BaseFragment;
 
 class Pagination extends BaseFragment {
   constructor(rootElement) {
     super(rootElement);
-    this.paginationNextButtonParentWrapperSelector = "/parent::li";
-    this.paginationNextButtonSelector = "//a[contains(text(), 'Next')]";
-    this.paginationPreviousButtonSelector = "//a[contains(text(),'Previous')]";
-    this.currentPaginationInfo = $(".current a");
+    this.paginationNextButtonParentWrapperSelector = '/parent::li';
+    this.paginationNextButtonSelector = '//a[contains(text(), \'Next\')]';
+    this.paginationPreviousButtonSelector = '//a[contains(text(),\'Previous\')]';
+    this.currentPaginationInfo = $('.current a');
     this.paginationNextButton = element(by.xpath(this.paginationNextButtonSelector));
     this.paginationPreviousButton = element(by.xpath(this.paginationPreviousButtonSelector));
     this.paginationNextButtonParentWrapper = element(by.xpath(`${this.paginationNextButtonSelector}${this.paginationNextButtonParentWrapperSelector}`));
@@ -34,7 +34,7 @@ class Pagination extends BaseFragment {
   }
 
   getTotalAmountOfComputersInPagination() {
-    return this.currentPaginationInfo.getText().then(text => Helpers.splitStringIntoArrayByAndGetIndex(text, " ", "last"));
+    return this.currentPaginationInfo.getText().then(text => Helpers.splitStringIntoArrayByAndGetIndex(text, ' ', 'last'));
   }
 
   clickNextButton() {

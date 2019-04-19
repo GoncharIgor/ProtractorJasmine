@@ -1,7 +1,7 @@
 class StringUtils {
   static generateRandomString(stringLength) {
-    let text = "";
-    const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let text = '';
+    const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
     for (let i = 0; i < stringLength; i++) {
       text += possible.charAt(Math.floor(Math.random() * possible.length));
@@ -25,7 +25,7 @@ class StringUtils {
   }
 
   static clone(obj) {
-    if (obj == null || typeof obj !== "object") return obj;
+    if (obj == null || typeof obj !== 'object') return obj;
     const copy = obj.constructor();
     for (const attr in obj) {
       if (obj.hasOwnProperty(attr)) copy[attr] = obj[attr];
@@ -37,9 +37,9 @@ class StringUtils {
     let result;
     text = text.split(by);
 
-    if (index === "last") {
+    if (index === 'last') {
       result = text[text.length - 1];
-    } else if (index === "first") {
+    } else if (index === 'first') {
       result = text[0];
     } else {
       result = text[index];

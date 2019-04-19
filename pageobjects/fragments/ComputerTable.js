@@ -1,16 +1,16 @@
-const ComputerSearchSection = require("./ComputerSearchForm");
-const computerSearch = new ComputerSearchSection($("#actions form"));
-const BaseFragment = require("protractor-element-extend").BaseFragment;
-const Helpers = require("./../../utils/helpers");
+const ComputerSearchSection = require('./ComputerSearchForm');
+const computerSearch = new ComputerSearchSection($('#actions form'));
+const BaseFragment = require('protractor-element-extend').BaseFragment;
+const Helpers = require('./../../utils/helpers');
 
 class ComputerTable extends BaseFragment {
   constructor(rootElement) {
     super(rootElement);
-    this.tableHeaderColumns = element.all(by.tagName("th"));
-    this.computerNamesInTheTable = element.all(by.css(".computers.zebra-striped>tbody>tr>td>a"));
-    this.computerIntroducedDateInTheTable = $(".computers.zebra-striped>tbody>tr>td:nth-child(2)");
-    this.computerDiscontinuedDateInTheTable = $(".computers.zebra-striped>tbody>tr>td:nth-child(3)");
-    this.computerCompanyNameInTheTable = $(".computers.zebra-striped>tbody>tr>td:nth-child(4)");
+    this.tableHeaderColumns = element.all(by.tagName('th'));
+    this.computerNamesInTheTable = element.all(by.css('.computers.zebra-striped>tbody>tr>td>a'));
+    this.computerIntroducedDateInTheTable = $('.computers.zebra-striped>tbody>tr>td:nth-child(2)');
+    this.computerDiscontinuedDateInTheTable = $('.computers.zebra-striped>tbody>tr>td:nth-child(3)');
+    this.computerCompanyNameInTheTable = $('.computers.zebra-striped>tbody>tr>td:nth-child(4)');
   }
 
   async getTableColumnsAmount() {

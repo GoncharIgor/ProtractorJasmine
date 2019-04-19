@@ -1,9 +1,9 @@
-const _ = require("lodash");
-const baseConfig = require("./base/conf");
+const _ = require('lodash');
+const baseConfig = require('./base/conf');
 
 const config = {
-    baseUrl: "http://computer-database.herokuapp.com/computers",
-    specs: ["../tests/indexPageView.js"],
+    baseUrl: 'http://computer-database.herokuapp.com/computers',
+    specs: ['../tests/indexPageView.js'],
 
     capabilities: {
         'browserName': 'internet explorer',

@@ -1,16 +1,16 @@
-const log4jsConfig = require("./log4js.conf");
-const AllureReporter = require("jasmine-allure-reporter");
-const fs = require("fs");
+const log4jsConfig = require('./log4js.conf');
+const AllureReporter = require('jasmine-allure-reporter');
+const fs = require('fs');
 const SpecReporter = require('jasmine-spec-reporter').SpecReporter;
 
 exports.config = {
-  framework: "jasmine2",
+  framework: 'jasmine2',
   // framework: 'custom',
-  seleniumArgs: ["-browserTimeout=60"],
+  seleniumArgs: ['-browserTimeout=60'],
   ignoreProtectedModeSettings: true,
 
   params: {
-    allureReportDirectory: "./target/allure-xml-report",
+    allureReportDirectory: './target/allure-xml-report',
   },
 
   // The timeout for each script run on the browser. This should be longer
@@ -20,7 +20,7 @@ exports.config = {
   // How long to wait for a page to load.
   getPageTimeout: 60000,
     //to remove if selenoid config is used
-    seleniumAddress: "http://localhost:4444/wd/hub",
+    seleniumAddress: 'http://localhost:4444/wd/hub',
     jasmineNodeOpts: {
         defaultTimeoutInterval: 100000,
         print: function () {
@@ -36,7 +36,7 @@ exports.config = {
 
     // allure reporter
     jasmine.getEnv().addReporter(new AllureReporter({
-      resultsDir: "./target/allure-xml-report",
+      resultsDir: './target/allure-xml-report',
     }));
 
       // add jasmine spec reporter

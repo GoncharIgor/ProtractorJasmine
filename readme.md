@@ -46,5 +46,3 @@ This will launch the test using all properties described in ```comp.js``` but if
 ```
 protractor config/comp.js --cucumberOpts.tags=@smoke --baseUrl $PORTAL-URL:PORT"/portalserver/ --seleniumAddress $SELENIUM-SERVER-URL:PORT/wd/hub  --parameters.portalName $PORTAL-NAME
 ```
-
-All the scripts provided above are listed in 'scripts' section of the package.json. You can also run these in your IDE (in my case it's WebStorm with Node.js plugin installed) through NPM Tool Window

@@ -1,9 +1,9 @@
-const AddNewComputerPage = require("./AddNewComputerPage");
+const AddNewComputerPage = require('./AddNewComputerPage');
 
 class EditComputerPage extends AddNewComputerPage {
   constructor() {
     super();
-    this.deleteThisComputerButton = $(".btn.danger");
+    this.deleteThisComputerButton = $('.btn.danger');
   }
 
   deleteComputer() {

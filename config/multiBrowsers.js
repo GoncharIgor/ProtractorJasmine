@@ -1,26 +1,26 @@
-const _ = require("lodash");
-const baseConfig = require("./base/conf");
+const _ = require('lodash');
+const baseConfig = require('./base/conf');
 
 const config = {
-  baseUrl: "http://computer-database.herokuapp.com/computers",
-  specs: ["../tests/*"],
+  baseUrl: 'http://computer-database.herokuapp.com/computers',
+  specs: ['../tests/*'],
 
   multiCapabilities: [{
-    browserName: "firefox",
+    browserName: 'firefox',
     firefoxOptions: {
-      args: ["--disable-infobars"],
+      args: ['--disable-infobars'],
       prefs: {
-        "geo.enabled": false,
+        'geo.enabled': false,
       },
     },
   }, {
-    browserName: "chrome",
+    browserName: 'chrome',
     chromeOptions: {
       args: [
-        "--disable-infobars",
+        '--disable-infobars',
       ],
       prefs: {
-        "profile.password_manager_enabled": false,
+        'profile.password_manager_enabled': false,
         credentials_enable_service: false,
         password_manager_enabled: false,
       },

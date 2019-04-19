@@ -36,7 +36,7 @@
     "allure-clean-report": "node ./node_modules/allure-commandline/bin/allure report clean --report-dir ./target/allure-html-report",
     "allure-generate-report": "node ./node_modules/allure-commandline/bin/allure generate ./target/allure-xml-report -o ./target/allure-html-report",
     "allure-open-report": "node ./node_modules/allure-commandline/bin/allure report open --report-dir ./target/allure-html-report",
-    "lint": "eslint ./**/*.js",
+    "lint": "eslint ./**/*.js --fix",
     "test": "protractor config/comp.js",
     "test-flake": "node config/base/flake.js config/comp.js",
     "test-multibrowser": "protractor config/multiBrowsers.js",
