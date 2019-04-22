@@ -1,5 +1,5 @@
 const _ = require('lodash');
-const baseConfig = require('./base/conf');
+const baseConfig = require('./base');
 
 const config = {
     baseUrl: 'http://computer-database.herokuapp.com/computers',

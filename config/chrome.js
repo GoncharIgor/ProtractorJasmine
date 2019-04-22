@@ -1,12 +1,7 @@
 const _ = require('lodash');
-const baseConfig = require('./base/conf');
+const baseConfig = require('./base');
 
 const config = _.merge(baseConfig, {
-    baseUrl: 'http://computer-database.herokuapp.com/computers',
-    specs: ['../tests/indexPageView.js'],
-    suites: { // --suite=view
-        view: ['../tests/*'],
-    },
     capabilities: {
         browserName: "chrome",
         enableVNC: true,

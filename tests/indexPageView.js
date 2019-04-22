@@ -1,5 +1,4 @@
 const IndexPage = require('./../pageobjects/pages/IndexPage');
-const testGen = require('jasmine-es6-generator');
 
 describe('Computer-database index page layout verification', () => {
     const indexPageObject = new IndexPage();
@@ -14,25 +13,28 @@ describe('Computer-database index page layout verification', () => {
     });
 
     it('App should have visible amount of computers on the page header', async () => {
-       await expect(indexPageObject.getPageHeader.isDisplayed()).toBe(true);
+        await expect(indexPageObject.getPageHeader.isDisplayed()).toBe(true);
     });
 
-    it('Index page header should contain \'computers found\'', () =>
-        expect(indexPageObject.getPageHeaderText()).toContain('computers found'));
+    it('Index page header should contain "computers found"', async () => {
+        await expect(indexPageObject.getPageHeaderText()).toContain('computers found');
+    });
 
-    it('App should have visible filter input field', testGen(function* () {
-        expect(yield indexPageObject.getComputerSearchForm.filterInputField.isDisplayed()).toBe(true);
-        expect(yield indexPageObject.getComputerSearchForm.filterInputField.getText()).toBe('');
-    }));
+    it('App should have visible filter input field', async () => {
+        await expect(indexPageObject.getComputerSearchForm.filterInputField.isDisplayed()).toBe(true);
+        await expect(indexPageObject.getComputerSearchForm.filterInputField.getText()).toBe('');
+    });
 
-    it('App should have visible filter submit button', () =>
-        expect(indexPageObject.getComputerSearchForm.filterSubmitButton.isDisplayed()).toBe(true));
+    it('App should have visible filter submit button', async () => {
+        await expect(indexPageObject.getComputerSearchForm.filterSubmitButton.isDisplayed()).toBe(true);
+    });
 
-    it('App should have visible \'Add new computer\' button', () =>
-        expect(indexPageObject.addNewComputerButton.isDisplayed()).toBe(true));
+    it('App should have visible "Add new computer" button', async () => {
+        await expect(indexPageObject.addNewComputerButton.isDisplayed()).toBe(true);
+    });
 
-    it('App should have visible pagination block', () =>
-        expect(indexPageObject.getPagination.isDisplayed()).toBe(true));
-
+    it('App should have visible pagination block', async () => {
+        await expect(indexPageObject.getPagination.isDisplayed()).toBe(true);
+    });
 });
 
