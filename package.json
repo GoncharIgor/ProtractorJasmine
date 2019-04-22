@@ -8,8 +8,12 @@
     "type": "git",
     "url": "https://github.com/GoncharIgor/ProtractorJasmine.git"
   },
+  "engines": {
+    "node": "^8",
+    "npm": "^5"
+  },
   "homepage": "http://computer-database.herokuapp.com/",
-  "main": "config/comp.js",
+  "main": "config/chrome.js",
   "dependencies": {
     "allure-commandline": "^2.9.0",
     "jasmine-allure-reporter": "1.0.2",
@@ -37,8 +41,8 @@
     "allure-generate-report": "node ./node_modules/allure-commandline/bin/allure generate ./target/allure-xml-report -o ./target/allure-html-report",
     "allure-open-report": "node ./node_modules/allure-commandline/bin/allure report open --report-dir ./target/allure-html-report",
     "lint": "eslint ./**/*.js --fix",
-    "test": "protractor config/comp.js",
-    "test-flake": "node config/base/flake.js config/comp.js",
+    "test": "protractor config/chrome.js",
+    "test-flake": "node config/flake.js config/chrome.js",
     "test-multibrowser": "protractor config/multiBrowsers.js",
     "wd-clean": "webdriver-manager clean",
     "wd-start": "node ./node_modules/protractor/bin/webdriver-manager start",

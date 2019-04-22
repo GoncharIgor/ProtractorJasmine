@@ -24,7 +24,7 @@ What does this do?
 
 ## Configuring
 
-The project has a bunch of configuration files but they are basically extending each other by adding different properties and in most cases you have nothing to do with them, the only two configuration files that you could be interested in is the ```base.conf.js``` and project-specific configuration file ```comp.js```
+The project has a bunch of configuration files but they are basically extending each other by adding different properties and in most cases you have nothing to do with them, the only two configuration files that you could be interested in is the ```base.base.js``` and project-specific configuration file ```chrome.js```
 
 
 ## Run the tests
@@ -39,10 +39,10 @@ webdriver-manager start
 ```
 3. To run the tests you have to use ```protractor``` command and then to specify the config file:
 ```
-protractor config/comp.js
+protractor config/chrome.js
 ```
 
-This will launch the test using all properties described in ```comp.js``` but if you need to specify some properties explicitly you can do this as follows:
+This will launch the test using all properties described in ```chrome.js``` but if you need to specify some properties explicitly you can do this as follows:
 ```
-protractor config/comp.js --cucumberOpts.tags=@smoke --baseUrl $PORTAL-URL:PORT"/portalserver/ --seleniumAddress $SELENIUM-SERVER-URL:PORT/wd/hub  --parameters.portalName $PORTAL-NAME
+protractor config/chrome.js --cucumberOpts.tags=@smoke --baseUrl $PORTAL-URL:PORT"/portalserver/ --seleniumAddress $SELENIUM-SERVER-URL:PORT/wd/hub  --parameters.portalName $PORTAL-NAME
 ```

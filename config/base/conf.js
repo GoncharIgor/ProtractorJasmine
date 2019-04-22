@@ -1,4 +1,4 @@
-const log4jsConfig = require('./log4js.conf');
+const log4jsConfig = require('../log4js.conf');
 const AllureReporter = require('jasmine-allure-reporter');
 const fs = require('fs');
 const SpecReporter = require('jasmine-spec-reporter').SpecReporter;
@@ -29,7 +29,7 @@ exports.config = {
 
   onPrepare: () => {
     log4jsConfig.call();
-    browser.ignoreSynchronization = true;
+    browser.waitForAngularEnabled(false);
     browser.driver.manage().window().setSize(1200, 800);
     //to remove if selenoid is used
     //browser.driver.manage().window().maximize();
